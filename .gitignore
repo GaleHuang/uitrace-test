@@ -1,0 +1,5 @@
+log/*
+.pytest_cache
+.idea
+__pycache__
+test/*
