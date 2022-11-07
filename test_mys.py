@@ -72,13 +72,14 @@ class TestHoyo(object):
                 times += 1
 
             times = 1
-            while not find(loc="obj_1667552225140.jpg", by=DriverType.CV, timeout=5):
+            while not find(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]", by=DriverType.UI, timeout=30):
                 if times >= 5:
                     logger.info("cannot click 点击登录")
-                    raise Exception("无法点击 点击登录")
-                click(loc="obj_1667549447833.jpg", by=DriverType.CV, timeout=30)
+                    raise Exception("无法点击 点击登录并进入登陆页面")
+                click(loc="//*[@resource-id='com.mihoyo.hyperion:id/rootLayout']/android.view.ViewGroup[1]/android.widget.TextView[1]", by=DriverType.UI, offset=None, timeout=30, duration=0.05, times=1)
                 time.sleep(1)
                 times += 1
+
         else:
             logger.info("没有找到我的")
             raise Exception("首页上没有我的按钮")
