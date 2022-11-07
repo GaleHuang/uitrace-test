@@ -57,7 +57,7 @@ class TestHoyo(object):
             else:
                 raise Exception("到达首页失败")
 
-        if find("obj_1667549382074.jpg", by=DriverType.CV, timeout = 3):
+        if find("//*[@resource-id='com.mihoyo.hyperion:id/mHomePageRbMe']/android.view.ViewGroup[1]", by=DriverType.UI):
             logger.info("找到了 我的")
             click(loc="obj_1667549382074.jpg", by=DriverType.CV, timeout=30)
             # 查找点击登录
