@@ -59,7 +59,7 @@ class TestHoyo(object):
 
         if find("//*[@resource-id='com.mihoyo.hyperion:id/mHomePageRbMe']/android.view.ViewGroup[1]", by=DriverType.UI):
             logger.info("找到了 我的")
-            click(loc="obj_1667549382074.jpg", by=DriverType.CV, timeout=30)
+            click(loc="//*[@resource-id='com.mihoyo.hyperion:id/mHomePageRbMe']/android.view.ViewGroup[1]", by=DriverType.UI, offset=None, timeout=30, duration=0.05, times=1)
             # 查找点击登录
             # 如果有新手提示
             times = 1
