@@ -23,8 +23,8 @@ class TestHoyo(object):
         # stop_app(settings.APPNAME)
 
     def test_login(self):
-        if find(loc="obj_1667550056947.jpg", by=DriverType.CV, timeout=10):
-            click(loc="obj_1667550056947.jpg", by=DriverType.CV, timeout=10)
+        if find(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.TextView[4]", by=DriverType.UI, timeout=30):
+            click(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.TextView[4]", by=DriverType.UI, offset=None, timeout=30, duration=0.05, times=1)
             time.sleep(3)
         else:
             logger.info("没有找到同意并继续")

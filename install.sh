@@ -1,0 +1,1 @@
+adb install test/mihoyobbs_2.38.1_gf.apk
