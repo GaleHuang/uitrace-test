@@ -23,7 +23,7 @@ class TestHoyo(object):
         # stop_app(settings.APPNAME)
 
     def test_login(self):
-        if find(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.TextView[4]", by=DriverType.UI, timeout=30):
+        if find(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.TextView[4]", by=DriverType.UI, timeout=5):
             click(loc="//*[@resource-id='android:id/content']/android.view.ViewGroup[1]/android.widget.TextView[4]", by=DriverType.UI, offset=None, timeout=30, duration=0.05, times=1)
             time.sleep(3)
         else:
@@ -37,7 +37,7 @@ class TestHoyo(object):
         else:
             logger.info("没有找到选择选好了按钮")
 
-        if click(loc="obj_1667550224158.jpg", by=DriverType.CV, timeout=5):
+        if find(loc="obj_1667550224158.jpg", by=DriverType.CV, timeout=5):
             logger.info("进入了青少年模式提示界面")
             logger.info("找到了 我知道了。点击确认")
 
@@ -46,11 +46,12 @@ class TestHoyo(object):
             logger.info("没有找到青少年模式的我知道了确认")
 
 
-        # 接下来要确认是否到达了首页，方法很简单，用CV找一下是否有签到福利
-        if find("obj_1667549586170.jpg", by=DriverType.CV, timeout = 30):
+        # 接下来要确认是否到达了首页，方法很简单，找一下是否有签到福利
+        if find(loc="//*[@resource-id='com.mihoyo.hyperion:id/mGoldenPart']/androidx.recyclerview.widget.RecyclerView[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]", by=DriverType.UI, timeout=30):
             logger.info("找到了签到福利，成功到达首页")
         else:
             logger.info("没有找到签到福利")
+
             loc = find_ocr("签到福利", 10)
             if loc:
                 logger.info("找到了签到福利，到达首页成功")
@@ -63,7 +64,7 @@ class TestHoyo(object):
             # 查找点击登录
             # 如果有新手提示
             times = 1
-            while not find(loc="obj_1667549447833.jpg", by=DriverType.CV, timeout=30):
+            while not find(loc="//*[@resource-id='com.mihoyo.hyperion:id/rootLayout']/android.view.ViewGroup[1]/android.widget.TextView[1]", by=DriverType.UI, timeout=30):
                 if times >= 5:
                     logger.info("find 5 times, 点击登录failed")
                     raise Exception("找到点击登录按钮失败")
@@ -84,10 +85,6 @@ class TestHoyo(object):
             logger.info("没有找到我的")
             raise Exception("首页上没有我的按钮")
 
-        if find(loc="obj_1667552225140.jpg", by=DriverType.CV, timeout=30):
-            logger.info("成功到达登陆页面")
-        else:
-            logger.info("未到达登陆页面")
-            raise Exception("login failed")
-
-        logger.info("login success")
+       
+        logger.info("成功到达登陆页面")
+        
